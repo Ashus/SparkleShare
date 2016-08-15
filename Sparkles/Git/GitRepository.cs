@@ -378,7 +378,7 @@ namespace Sparkles.Git {
                 this.user_is_set = true;
             }
 
-            git = new GitCommand (LocalPath, "commit --all --message=\"" + message + "\" " +
+            git = new GitCommand (LocalPath, "commit --all --message=\"" + message.Substring(0, message.Length > 3800 ? 3800 : message.Length) + "\" " +
                 "--author=\"" + base.local_config.User.Name + " <" + base.local_config.User.Email + ">\"");
 
             git.StartAndReadStandardOutput ();
